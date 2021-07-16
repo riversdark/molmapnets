@@ -7,7 +7,6 @@ import tensorflow as tf
 from sklearn.metrics import roc_auc_score
 import numpy as np
 
-
 # Cell
 def cross_entropy(y_true, y_pred, MASK = -1):
     mask = tf.cast(tf.not_equal(y_true, MASK), tf.keras.backend.floatx())

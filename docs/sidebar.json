@@ -2,6 +2,7 @@
   "molmapnets": {
     "Overview": "/",
     "loss": "loss.html",
-    "callbacks": "callbacks.html"
+    "callbacks": "callbacks.html",
+    "nets": "nets.html"
   }
 }

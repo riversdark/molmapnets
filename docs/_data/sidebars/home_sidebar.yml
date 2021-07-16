@@ -15,6 +15,9 @@ entries:
     - output: web,pdf
       title: callbacks
       url: callbacks.html
+    - output: web,pdf
+      title: nets
+      url: nets.html
     output: web
     title: molmapnets
   output: web
