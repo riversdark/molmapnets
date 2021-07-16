@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: loss
       url: loss.html
+    - output: web,pdf
+      title: callbacks
+      url: callbacks.html
     output: web
     title: molmapnets
   output: web

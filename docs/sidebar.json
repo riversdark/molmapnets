@@ -1,6 +1,7 @@
 {
   "molmapnets": {
     "Overview": "/",
-    "loss": "loss.html"
+    "loss": "loss.html",
+    "callbacks": "callbacks.html"
   }
 }
