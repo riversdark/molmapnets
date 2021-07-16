@@ -4,9 +4,14 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"cross_entropy": "01_loss.ipynb",
          "weighted_cross_entropy": "01_loss.ipynb",
-         "MALE": "01_loss.ipynb"}
+         "MALE": "01_loss.ipynb",
+         "r2_score": "02_callbacks.ipynb",
+         "prc_auc_score": "02_callbacks.ipynb",
+         "Reg_EarlyStoppingAndPerformance": "02_callbacks.ipynb",
+         "CLA_EarlyStoppingAndPerformance": "02_callbacks.ipynb"}
 
-modules = ["loss.py"]
+modules = ["loss.py",
+           "callbacks.py"]
 
 doc_url = "https://riversdark.github.io/molmapnets/"
 
