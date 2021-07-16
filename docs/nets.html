@@ -26,27 +26,6 @@ nb_path: "03_nets.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.utils</span> <span class="kn">import</span> <span class="n">plot_model</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">layers</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">MaxPool2D</span><span class="p">,</span> <span class="n">GlobalMaxPool2D</span><span class="p">,</span> <span class="n">BatchNormalization</span><span class="p">,</span> <span class="n">Activation</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">Concatenate</span><span class="p">,</span><span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
@@ -87,6 +66,13 @@ nb_path: "03_nets.ipynb"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Count-trainable-parameters-in-model">Count trainable parameters in model<a class="anchor-link" href="#Count-trainable-parameters-in-model"> </a></h2>
@@ -96,28 +82,30 @@ nb_path: "03_nets.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">count_trainable_params</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">continue</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">variables</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">:</span>
-                <span class="n">a</span> <span class="o">=</span> <span class="n">variables</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">as_list</span><span class="p">()</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">p</span> <span class="o">+=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">p</span> <span class="o">+=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">p</span>
-</pre></div>
+<div class="output_wrapper">
+<div class="output">
 
-    </div>
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="count_trainable_params" class="doc_header"><code>count_trainable_params</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>count_trainable_params</code>(<strong><code>model</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -131,23 +119,30 @@ nb_path: "03_nets.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">resnet_block</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">conv_size</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="n">conv_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">input_data</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="n">conv_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Add</span><span class="p">()([</span><span class="n">x</span><span class="p">,</span> <span class="n">input_data</span><span class="p">])</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">x</span>
-</pre></div>
+<div class="output_wrapper">
+<div class="output">
 
-    </div>
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="resnet_block" class="doc_header"><code>resnet_block</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L29" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet_block</code>(<strong><code>input_data</code></strong>, <strong><code>filters</code></strong>, <strong><code>conv_size</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -161,24 +156,31 @@ nb_path: "03_nets.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">Inception</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    naive google inception block</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="n">strides</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="n">strides</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
-    <span class="n">x3</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="n">strides</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
-    <span class="n">outputs</span> <span class="o">=</span> <span class="n">Concatenate</span><span class="p">()([</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">])</span>    
-    <span class="k">return</span> <span class="n">outputs</span>
-</pre></div>
+<div class="output_wrapper">
+<div class="output">
 
-    </div>
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="Inception" class="doc_header"><code>Inception</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L39" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>Inception</code>(<strong><code>inputs</code></strong>, <strong><code>units</code></strong>=<em><code>8</code></em>, <strong><code>strides</code></strong>=<em><code>1</code></em>)</p>
+</blockquote>
+<p>naive google inception block</p>
+
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -192,58 +194,35 @@ nb_path: "03_nets.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">MolMapNet</span><span class="p">(</span><span class="n">input_shape</span><span class="p">,</span>
-              <span class="n">n_outputs</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-              <span class="n">conv1_kernel_size</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>
-              <span class="n">dense_layers</span><span class="o">=</span><span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span>
-              <span class="n">dense_avf</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span>
-              <span class="n">last_avf</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    parameters</span>
-<span class="sd">    ----------------------</span>
-<span class="sd">    molmap_shape: w, h, c</span>
-<span class="sd">    n_outputs: output units</span>
-<span class="sd">    dense_layers: list, how many dense layers and units</span>
-<span class="sd">    dense_avf: activation function for dense layers</span>
-<span class="sd">    last_avf: activation function for last layer</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+<div class="output_wrapper">
+<div class="output">
 
-    <span class="n">conv1</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span>  <span class="n">conv1_kernel_size</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span>
-                   <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<div class="output_area">
 
-    <span class="n">conv1</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">conv1</span><span class="p">)</span>  <span class="c1"># p1</span>
 
-    <span class="n">incept1</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">(</span><span class="n">conv1</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="MolMapNet" class="doc_header"><code>MolMapNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L50" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>MolMapNet</code>(<strong><code>input_shape</code></strong>, <strong><code>n_outputs</code></strong>=<em><code>1</code></em>, <strong><code>conv1_kernel_size</code></strong>=<em><code>13</code></em>, <strong><code>dense_layers</code></strong>=<em><code>[128, 32]</code></em>, <strong><code>dense_avf</code></strong>=<em><code>'relu'</code></em>, <strong><code>last_avf</code></strong>=<em><code>None</code></em>)</p>
+</blockquote>
+<h2 id="parameters">parameters<a class="anchor-link" href="#parameters"> </a></h2><p>molmap_shape: w, h, c
+n_outputs: output units
+dense_layers: list, how many dense layers and units
+dense_avf: activation function for dense layers
+last_avf: activation function for last layer</p>
 
-    <span class="n">incept1</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">incept1</span><span class="p">)</span>  <span class="c1"># p2</span>
+</div>
 
-    <span class="n">incept2</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">(</span><span class="n">incept1</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+</div>
 
-    <span class="c1">#flatten</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">GlobalMaxPool2D</span><span class="p">()(</span><span class="n">incept2</span><span class="p">)</span>
-
-    <span class="c1">## dense layer</span>
-    <span class="k">for</span> <span class="n">units</span> <span class="ow">in</span> <span class="n">dense_layers</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">dense_avf</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-
-    <span class="c1">#last layer</span>
-    <span class="n">outputs</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">n_outputs</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">last_avf</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-
-    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">model</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -257,64 +236,36 @@ nb_path: "03_nets.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">MolMapDualPathNet</span><span class="p">(</span><span class="n">molmap1_size</span><span class="p">,</span> 
-                    <span class="n">molmap2_size</span><span class="p">,</span> 
-                    <span class="n">n_outputs</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-                    <span class="n">conv1_kernel_size</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>
-                    <span class="n">dense_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span> 
-                    <span class="n">dense_avf</span> <span class="o">=</span> <span class="s1">&#39;relu&#39;</span><span class="p">,</span> 
-                    <span class="n">last_avf</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    parameters</span>
-<span class="sd">    ----------------------</span>
-<span class="sd">    molmap1_size: w, h, c, shape of first molmap</span>
-<span class="sd">    molmap2_size: w, h, c, shape of second molmap</span>
-<span class="sd">    n_outputs: output units</span>
-<span class="sd">    dense_layers: list, how many dense layers and units</span>
-<span class="sd">    dense_avf: activation function for dense layers</span>
-<span class="sd">    last_avf: activation function for last layer</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
-    <span class="c1">## first inputs</span>
-    <span class="n">d_inputs1</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">molmap1_size</span><span class="p">)</span>
-    <span class="n">d_conv1</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span> <span class="n">conv1_kernel_size</span><span class="p">,</span> <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)(</span><span class="n">d_inputs1</span><span class="p">)</span>
-    <span class="n">d_pool1</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">d_conv1</span><span class="p">)</span> <span class="c1">#p1</span>
-    <span class="n">d_incept1</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">(</span><span class="n">d_pool1</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span>
-    <span class="n">d_pool2</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">d_incept1</span><span class="p">)</span> <span class="c1">#p2</span>
-    <span class="n">d_incept2</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">(</span><span class="n">d_pool2</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="mi">64</span><span class="p">)</span>
-    <span class="n">d_flat1</span> <span class="o">=</span> <span class="n">GlobalMaxPool2D</span><span class="p">()(</span><span class="n">d_incept2</span><span class="p">)</span>
+<div class="output_wrapper">
+<div class="output">
 
-    
-    <span class="c1">## second inputs</span>
-    <span class="n">f_inputs1</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">molmap2_size</span><span class="p">)</span>
-    <span class="n">f_conv1</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span> <span class="n">conv1_kernel_size</span><span class="p">,</span> <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)(</span><span class="n">f_inputs1</span><span class="p">)</span>
-    <span class="n">f_pool1</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">f_conv1</span><span class="p">)</span> <span class="c1">#p1</span>
-    <span class="n">f_incept1</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">(</span><span class="n">f_pool1</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span>
-    <span class="n">f_pool2</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">f_incept1</span><span class="p">)</span> <span class="c1">#p2</span>
-    <span class="n">f_incept2</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">(</span><span class="n">f_pool2</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="mi">64</span><span class="p">)</span>
-    <span class="n">f_flat1</span> <span class="o">=</span> <span class="n">GlobalMaxPool2D</span><span class="p">()(</span><span class="n">f_incept2</span><span class="p">)</span>    
-    
-    <span class="c1">## concat</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">Concatenate</span><span class="p">()([</span><span class="n">d_flat1</span><span class="p">,</span> <span class="n">f_flat1</span><span class="p">])</span> 
-    
-    <span class="c1">## dense layer</span>
-    <span class="k">for</span> <span class="n">units</span> <span class="ow">in</span> <span class="n">dense_layers</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="n">dense_avf</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<div class="output_area">
 
-    <span class="c1">## last layer</span>
-    <span class="n">outputs</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">n_outputs</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">last_avf</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">d_inputs1</span><span class="p">,</span> <span class="n">f_inputs1</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">model</span>
-</pre></div>
 
-    </div>
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="MolMapDualPathNet" class="doc_header"><code>MolMapDualPathNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L95" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>MolMapDualPathNet</code>(<strong><code>molmap1_size</code></strong>, <strong><code>molmap2_size</code></strong>, <strong><code>n_outputs</code></strong>=<em><code>1</code></em>, <strong><code>conv1_kernel_size</code></strong>=<em><code>13</code></em>, <strong><code>dense_layers</code></strong>=<em><code>[256, 128, 32]</code></em>, <strong><code>dense_avf</code></strong>=<em><code>'relu'</code></em>, <strong><code>last_avf</code></strong>=<em><code>None</code></em>)</p>
+</blockquote>
+<h2 id="parameters">parameters<a class="anchor-link" href="#parameters"> </a></h2><p>molmap1_size: w, h, c, shape of first molmap
+molmap2_size: w, h, c, shape of second molmap
+n_outputs: output units
+dense_layers: list, how many dense layers and units
+dense_avf: activation function for dense layers
+last_avf: activation function for last layer</p>
+
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -328,61 +279,35 @@ nb_path: "03_nets.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">MolMapAddPathNet</span><span class="p">(</span><span class="n">molmap_shape</span><span class="p">,</span>  <span class="n">additional_shape</span><span class="p">,</span>
-                    <span class="n">n_outputs</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>              
-                    <span class="n">dense_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span> 
-                    <span class="n">dense_avf</span> <span class="o">=</span> <span class="s1">&#39;relu&#39;</span><span class="p">,</span> 
-                    <span class="n">last_avf</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    
-    
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    parameters</span>
-<span class="sd">    ----------------------</span>
-<span class="sd">    molmap_shape: w, h, c</span>
-<span class="sd">    n_outputs: output units</span>
-<span class="sd">    dense_layers: list, how many dense layers and units</span>
-<span class="sd">    dense_avf: activation function for dense layers</span>
-<span class="sd">    last_avf: activation function for last layer</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">molmap_shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">molmap_shape</span><span class="p">)</span>
-    <span class="n">inputs_actvie_amount</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">additional_shape</span><span class="p">)</span>
-    
-    <span class="n">conv1</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
-    
-    <span class="n">conv1</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">conv1</span><span class="p">)</span> <span class="c1">#p1</span>
-    
-    <span class="n">incept1</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">(</span><span class="n">conv1</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span>
-    
-    <span class="n">incept1</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">incept1</span><span class="p">)</span> <span class="c1">#p2</span>
-    
-    <span class="n">incept2</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">(</span><span class="n">incept1</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="mi">64</span><span class="p">)</span>
-    
-    <span class="c1">#flatten</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">GlobalMaxPool2D</span><span class="p">()(</span><span class="n">incept2</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">inputs_actvie_amount</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    
-    <span class="c1">## dense layer</span>
-    <span class="k">for</span> <span class="n">units</span> <span class="ow">in</span> <span class="n">dense_layers</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="n">dense_avf</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-        
-    <span class="c1">#last layer</span>
-    <span class="n">outputs</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">n_outputs</span><span class="p">,</span><span class="n">activation</span><span class="o">=</span><span class="n">last_avf</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-    
-    
-    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">inputs</span><span class="p">,</span> <span class="n">inputs_actvie_amount</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">model</span>
-</pre></div>
+<div class="output_wrapper">
+<div class="output">
 
-    </div>
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="MolMapAddPathNet" class="doc_header"><code>MolMapAddPathNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L146" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>MolMapAddPathNet</code>(<strong><code>molmap_shape</code></strong>, <strong><code>additional_shape</code></strong>, <strong><code>n_outputs</code></strong>=<em><code>1</code></em>, <strong><code>dense_layers</code></strong>=<em><code>[128, 32]</code></em>, <strong><code>dense_avf</code></strong>=<em><code>'relu'</code></em>, <strong><code>last_avf</code></strong>=<em><code>None</code></em>)</p>
+</blockquote>
+<h2 id="parameters">parameters<a class="anchor-link" href="#parameters"> </a></h2><p>molmap_shape: w, h, c
+n_outputs: output units
+dense_layers: list, how many dense layers and units
+dense_avf: activation function for dense layers
+last_avf: activation function for last layer</p>
+
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -396,59 +321,36 @@ nb_path: "03_nets.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">MolMapResNet</span><span class="p">(</span><span class="n">input_shape</span><span class="p">,</span>
-                 <span class="n">num_resnet_blocks</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
-                <span class="n">n_outputs</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> 
-                <span class="n">dense_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span> 
-                <span class="n">dense_avf</span> <span class="o">=</span> <span class="s1">&#39;relu&#39;</span><span class="p">,</span> 
-                <span class="n">last_avf</span> <span class="o">=</span> <span class="kc">None</span>                
-                <span class="p">):</span>
-    
-    
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    parameters</span>
-<span class="sd">    ----------------------</span>
-<span class="sd">    molmap_shape: w, h, c</span>
-<span class="sd">    num_resnet_blocks: int</span>
-<span class="sd">    n_outputs: output units</span>
-<span class="sd">    dense_layers: list, how many dense layers and units</span>
-<span class="sd">    dense_avf: activation function for dense layers</span>
-<span class="sd">    last_avf: activation function for last layer</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span> <span class="c1">#input_shape = (24, 24, 3)</span>
-<span class="c1">#     x = layers.Conv2D(32, 11, activation=&#39;relu&#39;)(inputs)</span>
-<span class="c1">#     x = layers.Conv2D(64, 3, activation=&#39;relu&#39;)(x)</span>
-<span class="c1">#     x = layers.MaxPooling2D(3)(x)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span>  <span class="mi">13</span><span class="p">,</span> <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">padding</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span> <span class="c1">#p1</span>
-    
-    <span class="c1">## renet block </span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_resnet_blocks</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">resnet_block</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="output_wrapper">
+<div class="output">
 
-    <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">GlobalMaxPool2D</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+<div class="output_area">
 
-     <span class="c1">## dense layer</span>
-    <span class="k">for</span> <span class="n">units</span> <span class="ow">in</span> <span class="n">dense_layers</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="n">dense_avf</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-        
-    <span class="c1">#last layer</span>
-    <span class="n">outputs</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">n_outputs</span><span class="p">,</span><span class="n">activation</span><span class="o">=</span><span class="n">last_avf</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-    
-    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">model</span>
-</pre></div>
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="MolMapResNet" class="doc_header"><code>MolMapResNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L194" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>MolMapResNet</code>(<strong><code>input_shape</code></strong>, <strong><code>num_resnet_blocks</code></strong>=<em><code>8</code></em>, <strong><code>n_outputs</code></strong>=<em><code>1</code></em>, <strong><code>dense_layers</code></strong>=<em><code>[128, 32]</code></em>, <strong><code>dense_avf</code></strong>=<em><code>'relu'</code></em>, <strong><code>last_avf</code></strong>=<em><code>None</code></em>)</p>
+</blockquote>
+<h2 id="parameters">parameters<a class="anchor-link" href="#parameters"> </a></h2><p>molmap_shape: w, h, c
+num_resnet_blocks: int
+n_outputs: output units
+dense_layers: list, how many dense layers and units
+dense_avf: activation function for dense layers
+last_avf: activation function for last layer</p>
 
-    </div>
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}

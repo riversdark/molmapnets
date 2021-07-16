@@ -10,14 +10,17 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: loss
-      url: loss.html
+      title: losses
+      url: losses.html
     - output: web,pdf
       title: callbacks
       url: callbacks.html
     - output: web,pdf
       title: nets
       url: nets.html
+    - output: web,pdf
+      title: models
+      url: models.html
     output: web
     title: molmapnets
   output: web
