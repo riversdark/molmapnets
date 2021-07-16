@@ -16,7 +16,7 @@ from sklearn.metrics import get_scorer, SCORERS
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
 # Cell
-from .loss import cross_entropy, weighted_cross_entropy
+from .losses import cross_entropy, weighted_cross_entropy
 from .callbacks import CLA_EarlyStoppingAndPerformance, Reg_EarlyStoppingAndPerformance
 from .nets import MolMapNet, MolMapDualPathNet, MolMapAddPathNet, MolMapResNet
 

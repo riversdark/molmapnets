@@ -2,7 +2,7 @@
 SHELL := /bin/bash
 SRC = $(wildcard ./*.ipynb)
 
-all: molmapnets docs
+all: molmapnets docs test
 
 molmapnets: $(SRC)
 	nbdev_build_lib
