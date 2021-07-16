@@ -10,8 +10,8 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: core
-      url: core.html
+      title: loss
+      url: loss.html
     output: web
     title: molmapnets
   output: web

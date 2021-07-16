@@ -2,9 +2,11 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"say_hello": "00_core.ipynb"}
+index = {"cross_entropy": "01_loss.ipynb",
+         "weighted_cross_entropy": "01_loss.ipynb",
+         "MALE": "01_loss.ipynb"}
 
-modules = ["core.py"]
+modules = ["loss.py"]
 
 doc_url = "https://riversdark.github.io/molmapnets/"
 
