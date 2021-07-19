@@ -9,21 +9,17 @@ index = {"cross_entropy": "01_losses.ipynb",
          "prc_auc_score": "02_callbacks.ipynb",
          "Reg_EarlyStoppingAndPerformance": "02_callbacks.ipynb",
          "CLA_EarlyStoppingAndPerformance": "02_callbacks.ipynb",
-         "count_trainable_params": "03_nets.ipynb",
-         "resnet_block": "03_nets.ipynb",
+         "Convnet": "03_nets.ipynb",
          "Inception": "03_nets.ipynb",
-         "MolMapNet": "03_nets.ipynb",
-         "MolMapDualPathNet": "03_nets.ipynb",
-         "MolMapAddPathNet": "03_nets.ipynb",
-         "MolMapResNet": "03_nets.ipynb",
-         "RegressionEstimator": "04_models.ipynb",
-         "MultiClassEstimator": "04_models.ipynb",
-         "MultiLabelEstimator": "04_models.ipynb"}
+         "DoubleInception": "03_nets.ipynb",
+         "SinglePathFullyConnected": "03_nets.ipynb",
+         "DoublePathFullyConnected": "03_nets.ipynb",
+         "SinglePathMolMapNet": "03_nets.ipynb",
+         "Resnet": "03_nets.ipynb"}
 
 modules = ["losses.py",
            "callbacks.py",
-           "nets.py",
-           "models.py"]
+           "nets.py"]
 
 doc_url = "https://riversdark.github.io/molmapnets/"
 

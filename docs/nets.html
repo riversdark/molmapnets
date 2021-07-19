@@ -26,46 +26,17 @@ nb_path: "03_nets.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/olivier/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:516: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  _np_qint8 = np.dtype([(&#34;qint8&#34;, np.int8, 1)])
-/Users/olivier/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:517: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  _np_quint8 = np.dtype([(&#34;quint8&#34;, np.uint8, 1)])
-/Users/olivier/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:518: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  _np_qint16 = np.dtype([(&#34;qint16&#34;, np.int16, 1)])
-/Users/olivier/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:519: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  _np_quint16 = np.dtype([(&#34;quint16&#34;, np.uint16, 1)])
-/Users/olivier/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:520: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  _np_qint32 = np.dtype([(&#34;qint32&#34;, np.int32, 1)])
-/Users/olivier/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:525: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  np_resource = np.dtype([(&#34;resource&#34;, np.ubyte, 1)])
-/Users/olivier/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  _np_qint8 = np.dtype([(&#34;qint8&#34;, np.int8, 1)])
-/Users/olivier/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:542: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  _np_quint8 = np.dtype([(&#34;quint8&#34;, np.uint8, 1)])
-/Users/olivier/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:543: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  _np_qint16 = np.dtype([(&#34;qint16&#34;, np.int16, 1)])
-/Users/olivier/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:544: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  _np_quint16 = np.dtype([(&#34;quint16&#34;, np.uint16, 1)])
-/Users/olivier/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:545: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  _np_qint32 = np.dtype([(&#34;qint32&#34;, np.int32, 1)])
-/Users/olivier/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:550: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.
-  np_resource = np.dtype([(&#34;resource&#34;, np.ubyte, 1)])
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our implementation of the networks will follow this architecture:</p>
+<p><img src="https://github.com/shenwanxiang/bidd-molmap/blob/master/paper/images/net.png?raw=1" alt=""></p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -75,7 +46,19 @@ nb_path: "03_nets.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Count-trainable-parameters-in-model">Count trainable parameters in model<a class="anchor-link" href="#Count-trainable-parameters-in-model"> </a></h2>
+<h2 id="Feature-extraction">Feature extraction<a class="anchor-link" href="#Feature-extraction"> </a></h2><p>When building complex networks it's better to build and test the smaller components first, then combine them together. This way we can also reuse the individual parts easily.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Convolutional-block">Convolutional block<a class="anchor-link" href="#Convolutional-block"> </a></h3><p>This block takes the descriptor or  fingerprint maps as input, and returns outputs of a max pooling layer.</p>
+<ul>
+<li>Descriptor: <code>13*37*37</code> -&gt; <code>48*37*37</code> -&gt; <code>48*19*19</code></li>
+<li>Fingerprint: <code>3*37*36</code> -&gt; <code>48*37*36</code> -&gt; <code>48*19*18</code></li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -90,8 +73,9 @@ nb_path: "03_nets.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="count_trainable_params" class="doc_header"><code>count_trainable_params</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>count_trainable_params</code>(<strong><code>model</code></strong>)</p>
+<h2 id="Convnet" class="doc_header"><code>class</code> <code>Convnet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L12" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Convnet</code>(<strong><code>C_in</code></strong>=<em><code>13</code></em>, <strong><code>C_out</code></strong>=<em><code>48</code></em>, <strong><code>conv_size</code></strong>=<em><code>13</code></em>) :: <code>Module</code></p>
 </blockquote>
+<p>Convolutional feature extraction Block</p>
 
 </div>
 
@@ -112,13 +96,28 @@ nb_path: "03_nets.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Resnet-block">Resnet block<a class="anchor-link" href="#Resnet-block"> </a></h2>
+<p>Let's test it on the descriptor and fingerprint maps</p>
+
 </div>
 </div>
 </div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">convnet</span> <span class="o">=</span> <span class="n">Convnet</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">37</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">convnet</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -126,10 +125,9 @@ nb_path: "03_nets.ipynb"
 <div class="output_area">
 
 
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="resnet_block" class="doc_header"><code>resnet_block</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L29" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet_block</code>(<strong><code>input_data</code></strong>, <strong><code>filters</code></strong>, <strong><code>conv_size</code></strong>)</p>
-</blockquote>
 
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 48, 19, 19])</pre>
 </div>
 
 </div>
@@ -143,13 +141,49 @@ nb_path: "03_nets.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">convnet</span> <span class="o">=</span> <span class="n">Convnet</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">48</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">convnet</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 48, 19, 18])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Inception">Inception<a class="anchor-link" href="#Inception"> </a></h2>
+<h3 id="Inception-block">Inception block<a class="anchor-link" href="#Inception-block"> </a></h3><p>After the convolutional block, the resulting feature maps will further pass through some inception blocks.</p>
+<p>The inceptions implemented here are the naïve Google inceptions. It passes the input through multiple convolutional layers and then concatenate the output. This inception block is actually two smaller inception blocks bridged with a max pooling layer. First the small inception block:</p>
+<ul>
+<li>Descriptor: <code>48*19*19</code> -&gt; 3 outputs of <code>32*19*19</code> -&gt; <code>96*19*19</code>, |-&gt; <code>96*10*10</code> -&gt; 3 outputs of <code>64*10*10</code> -&gt; <code>192*10*10</code></li>
+<li>Fingerprint: <code>48*19*18</code> -&gt; 3 outputs of <code>32*19*18</code> -&gt; <code>96*19*18</code>, |-&gt; <code>96*10*9</code> -&gt; 3 outputs of <code>64*10*9</code> -&gt; <code>192*10*9</code></li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -164,9 +198,9 @@ nb_path: "03_nets.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="Inception" class="doc_header"><code>Inception</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L39" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>Inception</code>(<strong><code>inputs</code></strong>, <strong><code>units</code></strong>=<em><code>8</code></em>, <strong><code>strides</code></strong>=<em><code>1</code></em>)</p>
+<h2 id="Inception" class="doc_header"><code>class</code> <code>Inception</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L27" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Inception</code>(<strong><code>C_in</code></strong>=<em><code>48</code></em>, <strong><code>C_out</code></strong>=<em><code>32</code></em>, <strong><code>stride</code></strong>=<em><code>1</code></em>) :: <code>Module</code></p>
 </blockquote>
-<p>naive google inception block</p>
+<p>Naive Google Inception Block</p>
 
 </div>
 
@@ -181,13 +215,162 @@ nb_path: "03_nets.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inception</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">inception</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 96, 19, 19])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inception</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">(</span><span class="mi">96</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">inception</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 192, 10, 10])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inception</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">inception</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 96, 19, 18])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inception</span> <span class="o">=</span> <span class="n">Inception</span><span class="p">(</span><span class="mi">96</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">inception</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 192, 10, 9])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Molecular-Mapping-network">Molecular Mapping network<a class="anchor-link" href="#Molecular-Mapping-network"> </a></h2>
+<p>And the double inception block:</p>
+
 </div>
 </div>
 </div>
@@ -202,13 +385,9 @@ nb_path: "03_nets.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="MolMapNet" class="doc_header"><code>MolMapNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L50" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>MolMapNet</code>(<strong><code>input_shape</code></strong>, <strong><code>n_outputs</code></strong>=<em><code>1</code></em>, <strong><code>conv1_kernel_size</code></strong>=<em><code>13</code></em>, <strong><code>dense_layers</code></strong>=<em><code>[128, 32]</code></em>, <strong><code>dense_avf</code></strong>=<em><code>'relu'</code></em>, <strong><code>last_avf</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="DoubleInception" class="doc_header"><code>class</code> <code>DoubleInception</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L55" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DoubleInception</code>(<strong><code>C_in1</code></strong>=<em><code>48</code></em>, <strong><code>C_out1</code></strong>=<em><code>32</code></em>, <strong><code>stride1</code></strong>=<em><code>1</code></em>, <strong><code>C_in2</code></strong>=<em><code>96</code></em>, <strong><code>C_out2</code></strong>=<em><code>64</code></em>, <strong><code>stride2</code></strong>=<em><code>1</code></em>) :: <code>Module</code></p>
 </blockquote>
-<h2 id="parameters">parameters<a class="anchor-link" href="#parameters"> </a></h2><p>molmap_shape: w, h, c
-n_outputs: output units
-dense_layers: list, how many dense layers and units
-dense_avf: activation function for dense layers
-last_avf: activation function for last layer</p>
+<p>Double Inception Block</p>
 
 </div>
 
@@ -223,6 +402,393 @@ last_avf: activation function for last layer</p>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">double_inception</span> <span class="o">=</span> <span class="n">DoubleInception</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">double_inception</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 192, 10, 10])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">double_inception</span> <span class="o">=</span> <span class="n">DoubleInception</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">double_inception</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 192, 10, 9])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Global-max-pooling">Global max pooling<a class="anchor-link" href="#Global-max-pooling"> </a></h3><p>There is no global max pooling layer in PyTorch but this is very easy to realise.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 192])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Fully-connected-block">Fully connected block<a class="anchor-link" href="#Fully-connected-block"> </a></h3><p>At the end of the network the data passes through several fully connected layers.</p>
+<p>If the MolMap network is single path:</p>
+<ul>
+<li><code>192</code> -&gt; <code>128</code> -&gt; <code>32</code></li>
+</ul>
+<p>And if double path:</p>
+<ul>
+<li><code>384</code> -&gt; <code>256</code> -&gt; <code>128</code> -&gt; <code>32</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="SinglePathFullyConnected" class="doc_header"><code>class</code> <code>SinglePathFullyConnected</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L72" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SinglePathFullyConnected</code>(<strong><code>C1</code></strong>=<em><code>192</code></em>, <strong><code>C2</code></strong>=<em><code>128</code></em>, <strong><code>C3</code></strong>=<em><code>32</code></em>) :: <code>Module</code></p>
+</blockquote>
+<p>Fully connected layers for single path MolMap nets</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">single_path_fully_connected</span> <span class="o">=</span> <span class="n">SinglePathFullyConnected</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">192</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">single_path_fully_connected</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 32])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="DoublePathFullyConnected" class="doc_header"><code>class</code> <code>DoublePathFullyConnected</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L87" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DoublePathFullyConnected</code>(<strong><code>C1</code></strong>=<em><code>384</code></em>, <strong><code>C2</code></strong>=<em><code>256</code></em>, <strong><code>C3</code></strong>=<em><code>128</code></em>, <strong><code>C4</code></strong>=<em><code>32</code></em>) :: <code>Module</code></p>
+</blockquote>
+<p>Fully connected layers for double paths MolMap nets</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">double_path_fully_connected</span> <span class="o">=</span> <span class="n">DoublePathFullyConnected</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">384</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">double_path_fully_connected</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 32])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Single-Path-Molecular-Mapping-network">Single Path Molecular Mapping network<a class="anchor-link" href="#Single-Path-Molecular-Mapping-network"> </a></h2><p>Descriptor map or Fingerprint map only. The two have identical network structures, and only differs in data shape.</p>
+<ul>
+<li>descriptor: <code>13*37*37</code> -&gt; <code>32</code></li>
+<li>fingerprint: <code>3*37*36</code> -&gt; <code>32</code></li>
+</ul>
+<p>The output layer is not included.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="SinglePathMolMapNet" class="doc_header"><code>class</code> <code>SinglePathMolMapNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L104" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SinglePathMolMapNet</code>(<strong><code>conv_in</code></strong>=<em><code>13</code></em>, <strong><code>conv_out</code></strong>=<em><code>48</code></em>, <strong><code>conv_size</code></strong>=<em><code>13</code></em>, <strong><code>incept_in1</code></strong>=<em><code>48</code></em>, <strong><code>incept_out1</code></strong>=<em><code>32</code></em>, <strong><code>incept_stride1</code></strong>=<em><code>1</code></em>, <strong><code>incept_in2</code></strong>=<em><code>96</code></em>, <strong><code>incept_out2</code></strong>=<em><code>64</code></em>, <strong><code>incept_stride2</code></strong>=<em><code>1</code></em>, <strong><code>C1</code></strong>=<em><code>192</code></em>, <strong><code>C2</code></strong>=<em><code>128</code></em>, <strong><code>C3</code></strong>=<em><code>32</code></em>) :: <code>Module</code></p>
+</blockquote>
+<p>Single Path Molecular Mapping Network</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">single_path</span> <span class="o">=</span> <span class="n">SinglePathMolMapNet</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">37</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">single_path</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 32])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">single_path</span> <span class="o">=</span> <span class="n">SinglePathMolMapNet</span><span class="p">(</span><span class="n">conv_in</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">single_path</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 32])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -233,91 +799,25 @@ last_avf: activation function for last layer</p>
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="MolMapDualPathNet" class="doc_header"><code>MolMapDualPathNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L95" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>MolMapDualPathNet</code>(<strong><code>molmap1_size</code></strong>, <strong><code>molmap2_size</code></strong>, <strong><code>n_outputs</code></strong>=<em><code>1</code></em>, <strong><code>conv1_kernel_size</code></strong>=<em><code>13</code></em>, <strong><code>dense_layers</code></strong>=<em><code>[256, 128, 32]</code></em>, <strong><code>dense_avf</code></strong>=<em><code>'relu'</code></em>, <strong><code>last_avf</code></strong>=<em><code>None</code></em>)</p>
-</blockquote>
-<h2 id="parameters">parameters<a class="anchor-link" href="#parameters"> </a></h2><p>molmap1_size: w, h, c, shape of first molmap
-molmap2_size: w, h, c, shape of second molmap
-n_outputs: output units
-dense_layers: list, how many dense layers and units
-dense_avf: activation function for dense layers
-last_avf: activation function for last layer</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Additive-path-Molecular-Mapping-network">Additive path Molecular Mapping network<a class="anchor-link" href="#Additive-path-Molecular-Mapping-network"> </a></h2>
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="MolMapAddPathNet" class="doc_header"><code>MolMapAddPathNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L146" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>MolMapAddPathNet</code>(<strong><code>molmap_shape</code></strong>, <strong><code>additional_shape</code></strong>, <strong><code>n_outputs</code></strong>=<em><code>1</code></em>, <strong><code>dense_layers</code></strong>=<em><code>[128, 32]</code></em>, <strong><code>dense_avf</code></strong>=<em><code>'relu'</code></em>, <strong><code>last_avf</code></strong>=<em><code>None</code></em>)</p>
-</blockquote>
-<h2 id="parameters">parameters<a class="anchor-link" href="#parameters"> </a></h2><p>molmap_shape: w, h, c
-n_outputs: output units
-dense_layers: list, how many dense layers and units
-dense_avf: activation function for dense layers
-last_avf: activation function for last layer</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Residual-Molecular-Mapping-network">Residual Molecular Mapping network<a class="anchor-link" href="#Residual-Molecular-Mapping-network"> </a></h2>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Resnet-block">Resnet block<a class="anchor-link" href="#Resnet-block"> </a></h3><p>Thought not used Note that in the first conv net the activation is <em>before</em> batch normalisation.</p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -329,14 +829,9 @@ last_avf: activation function for last layer</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="MolMapResNet" class="doc_header"><code>MolMapResNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L194" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>MolMapResNet</code>(<strong><code>input_shape</code></strong>, <strong><code>num_resnet_blocks</code></strong>=<em><code>8</code></em>, <strong><code>n_outputs</code></strong>=<em><code>1</code></em>, <strong><code>dense_layers</code></strong>=<em><code>[128, 32]</code></em>, <strong><code>dense_avf</code></strong>=<em><code>'relu'</code></em>, <strong><code>last_avf</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="Resnet" class="doc_header"><code>class</code> <code>Resnet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L127" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Resnet</code>(<strong><code>C</code></strong>, <strong><code>conv_size</code></strong>) :: <code>Module</code></p>
 </blockquote>
-<h2 id="parameters">parameters<a class="anchor-link" href="#parameters"> </a></h2><p>molmap_shape: w, h, c
-num_resnet_blocks: int
-n_outputs: output units
-dense_layers: list, how many dense layers and units
-dense_avf: activation function for dense layers
-last_avf: activation function for last layer</p>
+<p>Naive Google Inception Block</p>
 
 </div>
 
@@ -351,6 +846,43 @@ last_avf: activation function for last layer</p>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">resnet</span> <span class="o">=</span> <span class="n">Resnet</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">resnet</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 48, 19, 18])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
 
 </div>
     {% endraw %}
