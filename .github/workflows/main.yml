@@ -20,7 +20,7 @@ jobs:
         conda info -a
         conda create -q -n molmap python=3.6
         conda activate molmap
-        conda install -c fastai nbdev jupyter
+        pip install nbdev jupyter
         pip install -e .
     - name: Read all notebooks
       run: |
