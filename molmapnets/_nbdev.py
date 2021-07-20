@@ -16,11 +16,15 @@ index = {"cross_entropy": "01_losses.ipynb",
          "DoublePathFullyConnected": "03_nets.ipynb",
          "SinglePathMolMapNet": "03_nets.ipynb",
          "DoublePathMolMapNet": "03_nets.ipynb",
-         "Resnet": "03_nets.ipynb"}
+         "Resnet": "03_nets.ipynb",
+         "MolMapRegression": "04_models.ipynb",
+         "MolMapMultiClassClassification": "04_models.ipynb",
+         "MolMapMultiLabelClassification": "04_models.ipynb"}
 
 modules = ["losses.py",
            "callbacks.py",
-           "nets.py"]
+           "nets.py",
+           "models.py"]
 
 doc_url = "https://riversdark.github.io/molmapnets/"
 

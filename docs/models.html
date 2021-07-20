@@ -29,6 +29,862 @@ nb_path: "04_models.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These are the models for specific tasks, like regression, multi-class classification and multi-label classification. In all these models we can choose to use single path MolMap architecture, which includes only one of descriptor map or fingerprint map, or double path MolMap, which combines the two.</p>
+<p>These models are thin wrappers of MolMap nets, with different outcome activation functions.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Regression">Regression<a class="anchor-link" href="#Regression"> </a></h2><p>For regression the activation function is just another fully connected layer with output size 1.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="MolMapRegression" class="doc_header"><code>class</code> <code>MolMapRegression</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/models.py#L13" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>MolMapRegression</code>(<strong><code>conv_in1</code></strong>=<em><code>13</code></em>, <strong><code>conv_in2</code></strong>=<em><code>None</code></em>, <strong><code>conv_size</code></strong>=<em><code>13</code></em>) :: <code>Module</code></p>
+</blockquote>
+<p>Mol Map nets used for regression</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Single path, descriptor</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">descriptor</span> <span class="o">=</span> <span class="n">MolMapRegression</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">37</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">descriptor</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/olivier/opt/anaconda3/envs/molmap/lib/python3.6/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  ../c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 1])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Single path, fingerprint</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fingerprint</span> <span class="o">=</span> <span class="n">MolMapRegression</span><span class="p">(</span><span class="n">conv_in1</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">fingerprint</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 1])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If the network is double path then we pass in a tuple of inputs</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">double_path</span> <span class="o">=</span> <span class="n">MolMapRegression</span><span class="p">(</span><span class="n">conv_in1</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">conv_in2</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">i1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">37</span><span class="p">))</span>
+<span class="n">i2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">double_path</span><span class="p">((</span><span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">))</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 1])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Multi-class-classification">Multi-class classification<a class="anchor-link" href="#Multi-class-classification"> </a></h2><p>For multi-class classification we use the softmax activation function. Softmax transforms a vector so that each value in the vector falls between 0 and 1 and the vector sums to one. It's the logistic transformation generalised to vectors. In practice we use <a href="https://pytorch.org/docs/stable/generated/torch.nn.LogSoftmax.html">logsoftmax</a> because it's computationally more stable.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="MolMapMultiClassClassification" class="doc_header"><code>class</code> <code>MolMapMultiClassClassification</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/models.py#L38" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>MolMapMultiClassClassification</code>(<strong><code>conv_in1</code></strong>=<em><code>13</code></em>, <strong><code>conv_in2</code></strong>=<em><code>None</code></em>, <strong><code>conv_size</code></strong>=<em><code>13</code></em>, <strong><code>n_class</code></strong>=<em><code>10</code></em>) :: <code>Module</code></p>
+</blockquote>
+<p>MolMap nets used for multi-class classification</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Single path, descriptor</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">descriptor</span> <span class="o">=</span> <span class="n">MolMapMultiClassClassification</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">37</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">descriptor</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 10])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">o</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor([1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000,
+        1.0000], grad_fn=&lt;SumBackward1&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Single path, fingerprint</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fingerprint</span> <span class="o">=</span> <span class="n">MolMapMultiClassClassification</span><span class="p">(</span><span class="n">conv_in1</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">fingerprint</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 10])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">o</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor([1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000,
+        1.0000], grad_fn=&lt;SumBackward1&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If the network is double path then we pass in a tuple of inputs</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">double_path</span> <span class="o">=</span> <span class="n">MolMapMultiClassClassification</span><span class="p">(</span><span class="n">conv_in1</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">conv_in2</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">i1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">37</span><span class="p">))</span>
+<span class="n">i2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">double_path</span><span class="p">((</span><span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">))</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 10])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">o</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor([1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000,
+        1.0000], grad_fn=&lt;SumBackward1&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Multi-label-classification">Multi-label classification<a class="anchor-link" href="#Multi-label-classification"> </a></h2><p>For multi-label classification, each input can have multiple labels, and the belonging to one label is independent of belonging to the others, so we'll use the Sigmoid activation function.</p>
+<p>Compared to the multi-class problem, we only have to switch the soft max activation to sigmoid.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="MolMapMultiLabelClassification" class="doc_header"><code>class</code> <code>MolMapMultiLabelClassification</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/models.py#L65" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>MolMapMultiLabelClassification</code>(<strong><code>conv_in1</code></strong>=<em><code>13</code></em>, <strong><code>conv_in2</code></strong>=<em><code>None</code></em>, <strong><code>conv_size</code></strong>=<em><code>13</code></em>, <strong><code>n_label</code></strong>=<em><code>5</code></em>) :: <code>Module</code></p>
+</blockquote>
+<p>MolMap nets used for multi-label classification</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Single path, descriptor</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">descriptor</span> <span class="o">=</span> <span class="n">MolMapMultiLabelClassification</span><span class="p">()</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">37</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">descriptor</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 5])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">o</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor([[0.5123, 0.4982, 0.5085, 0.5067, 0.5225],
+        [0.5123, 0.4992, 0.5087, 0.5077, 0.5228],
+        [0.5125, 0.4983, 0.5086, 0.5074, 0.5222],
+        [0.5125, 0.4987, 0.5087, 0.5073, 0.5226],
+        [0.5123, 0.4988, 0.5077, 0.5072, 0.5219],
+        [0.5125, 0.4985, 0.5080, 0.5074, 0.5222],
+        [0.5125, 0.4988, 0.5086, 0.5076, 0.5221],
+        [0.5128, 0.4988, 0.5084, 0.5072, 0.5218],
+        [0.5126, 0.4984, 0.5087, 0.5073, 0.5226],
+        [0.5123, 0.4985, 0.5078, 0.5077, 0.5222]], grad_fn=&lt;SigmoidBackward&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Single path, fingerprint</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fingerprint</span> <span class="o">=</span> <span class="n">MolMapMultiLabelClassification</span><span class="p">(</span><span class="n">conv_in1</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">fingerprint</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 5])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">o</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor([[0.5306, 0.4968, 0.5135, 0.4851, 0.4569],
+        [0.5307, 0.4966, 0.5134, 0.4842, 0.4570],
+        [0.5302, 0.4965, 0.5129, 0.4842, 0.4578],
+        [0.5305, 0.4962, 0.5133, 0.4845, 0.4575],
+        [0.5306, 0.4966, 0.5131, 0.4845, 0.4570],
+        [0.5302, 0.4966, 0.5130, 0.4846, 0.4574],
+        [0.5309, 0.4965, 0.5136, 0.4844, 0.4573],
+        [0.5306, 0.4966, 0.5132, 0.4848, 0.4575],
+        [0.5302, 0.4970, 0.5131, 0.4845, 0.4572],
+        [0.5306, 0.4965, 0.5130, 0.4848, 0.4574]], grad_fn=&lt;SigmoidBackward&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If the network is double path then we pass in a tuple of inputs</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">double_path</span> <span class="o">=</span> <span class="n">MolMapMultiLabelClassification</span><span class="p">(</span><span class="n">conv_in1</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">conv_in2</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">i1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">37</span><span class="p">))</span>
+<span class="n">i2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">double_path</span><span class="p">((</span><span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">))</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 5])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">o</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor([[0.5373, 0.4629, 0.5402, 0.5400, 0.4900],
+        [0.5374, 0.4630, 0.5404, 0.5398, 0.4901],
+        [0.5372, 0.4630, 0.5405, 0.5399, 0.4899],
+        [0.5374, 0.4630, 0.5406, 0.5401, 0.4899],
+        [0.5374, 0.4630, 0.5403, 0.5400, 0.4902],
+        [0.5373, 0.4628, 0.5405, 0.5399, 0.4899],
+        [0.5373, 0.4629, 0.5404, 0.5398, 0.4901],
+        [0.5375, 0.4629, 0.5406, 0.5401, 0.4897],
+        [0.5372, 0.4628, 0.5405, 0.5399, 0.4900],
+        [0.5373, 0.4629, 0.5405, 0.5399, 0.4900]], grad_fn=&lt;SigmoidBackward&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Switch the order of descriptor and fingerprint map</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">double_path</span> <span class="o">=</span> <span class="n">MolMapMultiLabelClassification</span><span class="p">(</span><span class="n">conv_in1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">conv_in2</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+
+<span class="n">i1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">37</span><span class="p">))</span>
+<span class="n">i2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">double_path</span><span class="p">((</span><span class="n">i2</span><span class="p">,</span> <span class="n">i1</span><span class="p">))</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 5])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">o</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tensor([[0.5157, 0.5316, 0.5249, 0.5016, 0.5349],
+        [0.5154, 0.5318, 0.5249, 0.5018, 0.5351],
+        [0.5159, 0.5318, 0.5249, 0.5016, 0.5348],
+        [0.5157, 0.5317, 0.5248, 0.5016, 0.5347],
+        [0.5159, 0.5318, 0.5249, 0.5015, 0.5352],
+        [0.5159, 0.5318, 0.5248, 0.5015, 0.5348],
+        [0.5158, 0.5317, 0.5249, 0.5015, 0.5347],
+        [0.5159, 0.5317, 0.5248, 0.5016, 0.5349],
+        [0.5156, 0.5316, 0.5247, 0.5017, 0.5350],
+        [0.5159, 0.5316, 0.5248, 0.5016, 0.5350]], grad_fn=&lt;SigmoidBackward&gt;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 </div>
  
 
