@@ -4,7 +4,7 @@
 
 This package implements the neural network architects originally presented in the [MolMap](https://github.com/shenwanxiang/bidd-molmap) package, with two important differences:
 
-- The package is written using literate programming so all founctionalities are written and tested in Jupyter notebooks, and the implementation, testing, and documentation are done together at the same time. You can find the documentation on the [package website](https://riversdark.github.io/molmapnets/).
+- The package is written using literate programming so all functionalities are written and tested in Jupyter notebooks, and the implementation, testing, and documentation are done together at the same time. You can find the documentation on the [package website](https://riversdark.github.io/molmapnets/).
 - The models are implemented in PyTorch.
 
 ## Install

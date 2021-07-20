@@ -11,15 +11,6 @@ jobs:
         architecture: 'x64'
     - name: Install the library
       run: |
-        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-        bash miniconda.sh -b -p $HOME/miniconda
-        source "$HOME/miniconda/etc/profile.d/conda.sh"
-        hash -r
-        conda config --set always_yes yes --set changeps1 no
-        conda update -q conda
-        conda info -a
-        conda create -q -n molmap python=3.6
-        conda activate molmap
         pip install nbdev jupyter
         pip install -e .
     - name: Read all notebooks
