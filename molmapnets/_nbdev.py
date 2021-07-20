@@ -2,28 +2,19 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"cross_entropy": "01_losses.ipynb",
-         "weighted_cross_entropy": "01_losses.ipynb",
-         "MALE": "01_losses.ipynb",
-         "r2_score": "02_callbacks.ipynb",
-         "prc_auc_score": "02_callbacks.ipynb",
-         "Reg_EarlyStoppingAndPerformance": "02_callbacks.ipynb",
-         "CLA_EarlyStoppingAndPerformance": "02_callbacks.ipynb",
-         "Convnet": "03_nets.ipynb",
-         "Inception": "03_nets.ipynb",
-         "DoubleInception": "03_nets.ipynb",
-         "SinglePathFullyConnected": "03_nets.ipynb",
-         "DoublePathFullyConnected": "03_nets.ipynb",
-         "SinglePathMolMapNet": "03_nets.ipynb",
-         "DoublePathMolMapNet": "03_nets.ipynb",
-         "Resnet": "03_nets.ipynb",
-         "MolMapRegression": "04_models.ipynb",
-         "MolMapMultiClassClassification": "04_models.ipynb",
-         "MolMapMultiLabelClassification": "04_models.ipynb"}
+index = {"Convnet": "01_nets.ipynb",
+         "Inception": "01_nets.ipynb",
+         "DoubleInception": "01_nets.ipynb",
+         "SinglePathFullyConnected": "01_nets.ipynb",
+         "DoublePathFullyConnected": "01_nets.ipynb",
+         "SinglePathMolMapNet": "01_nets.ipynb",
+         "DoublePathMolMapNet": "01_nets.ipynb",
+         "Resnet": "01_nets.ipynb",
+         "MolMapRegression": "02_models.ipynb",
+         "MolMapMultiClassClassification": "02_models.ipynb",
+         "MolMapMultiLabelClassification": "02_models.ipynb"}
 
-modules = ["losses.py",
-           "callbacks.py",
-           "nets.py",
+modules = ["nets.py",
            "models.py"]
 
 doc_url = "https://riversdark.github.io/molmapnets/"
