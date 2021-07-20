@@ -15,6 +15,7 @@ index = {"cross_entropy": "01_losses.ipynb",
          "SinglePathFullyConnected": "03_nets.ipynb",
          "DoublePathFullyConnected": "03_nets.ipynb",
          "SinglePathMolMapNet": "03_nets.ipynb",
+         "DoublePathMolMapNet": "03_nets.ipynb",
          "Resnet": "03_nets.ipynb"}
 
 modules = ["losses.py",

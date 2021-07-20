@@ -124,6 +124,15 @@ nb_path: "03_nets.ipynb"
 
 <div class="output_area">
 
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/olivier/opt/anaconda3/envs/molmap/lib/python3.6/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  ../c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -198,7 +207,7 @@ nb_path: "03_nets.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Inception" class="doc_header"><code>class</code> <code>Inception</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L27" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Inception</code>(<strong><code>C_in</code></strong>=<em><code>48</code></em>, <strong><code>C_out</code></strong>=<em><code>32</code></em>, <strong><code>stride</code></strong>=<em><code>1</code></em>) :: <code>Module</code></p>
+<h2 id="Inception" class="doc_header"><code>class</code> <code>Inception</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L28" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Inception</code>(<strong><code>C_in</code></strong>=<em><code>48</code></em>, <strong><code>C_out</code></strong>=<em><code>32</code></em>, <strong><code>stride</code></strong>=<em><code>1</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>Naive Google Inception Block</p>
 
@@ -385,7 +394,7 @@ nb_path: "03_nets.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DoubleInception" class="doc_header"><code>class</code> <code>DoubleInception</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L55" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DoubleInception</code>(<strong><code>C_in1</code></strong>=<em><code>48</code></em>, <strong><code>C_out1</code></strong>=<em><code>32</code></em>, <strong><code>stride1</code></strong>=<em><code>1</code></em>, <strong><code>C_in2</code></strong>=<em><code>96</code></em>, <strong><code>C_out2</code></strong>=<em><code>64</code></em>, <strong><code>stride2</code></strong>=<em><code>1</code></em>) :: <code>Module</code></p>
+<h2 id="DoubleInception" class="doc_header"><code>class</code> <code>DoubleInception</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L56" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DoubleInception</code>(<strong><code>C_in1</code></strong>=<em><code>48</code></em>, <strong><code>C_out1</code></strong>=<em><code>32</code></em>, <strong><code>stride1</code></strong>=<em><code>1</code></em>, <strong><code>C_in2</code></strong>=<em><code>96</code></em>, <strong><code>C_out2</code></strong>=<em><code>64</code></em>, <strong><code>stride2</code></strong>=<em><code>1</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>Double Inception Block</p>
 
@@ -548,7 +557,7 @@ nb_path: "03_nets.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="SinglePathFullyConnected" class="doc_header"><code>class</code> <code>SinglePathFullyConnected</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L72" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SinglePathFullyConnected</code>(<strong><code>C1</code></strong>=<em><code>192</code></em>, <strong><code>C2</code></strong>=<em><code>128</code></em>, <strong><code>C3</code></strong>=<em><code>32</code></em>) :: <code>Module</code></p>
+<h2 id="SinglePathFullyConnected" class="doc_header"><code>class</code> <code>SinglePathFullyConnected</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L73" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SinglePathFullyConnected</code>(<strong><code>C1</code></strong>=<em><code>192</code></em>, <strong><code>C2</code></strong>=<em><code>128</code></em>, <strong><code>C3</code></strong>=<em><code>32</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>Fully connected layers for single path MolMap nets</p>
 
@@ -617,7 +626,7 @@ nb_path: "03_nets.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="DoublePathFullyConnected" class="doc_header"><code>class</code> <code>DoublePathFullyConnected</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L87" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DoublePathFullyConnected</code>(<strong><code>C1</code></strong>=<em><code>384</code></em>, <strong><code>C2</code></strong>=<em><code>256</code></em>, <strong><code>C3</code></strong>=<em><code>128</code></em>, <strong><code>C4</code></strong>=<em><code>32</code></em>) :: <code>Module</code></p>
+<h2 id="DoublePathFullyConnected" class="doc_header"><code>class</code> <code>DoublePathFullyConnected</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L88" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DoublePathFullyConnected</code>(<strong><code>C1</code></strong>=<em><code>384</code></em>, <strong><code>C2</code></strong>=<em><code>256</code></em>, <strong><code>C3</code></strong>=<em><code>128</code></em>, <strong><code>C4</code></strong>=<em><code>32</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>Fully connected layers for double paths MolMap nets</p>
 
@@ -698,7 +707,7 @@ nb_path: "03_nets.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="SinglePathMolMapNet" class="doc_header"><code>class</code> <code>SinglePathMolMapNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L104" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SinglePathMolMapNet</code>(<strong><code>conv_in</code></strong>=<em><code>13</code></em>, <strong><code>conv_out</code></strong>=<em><code>48</code></em>, <strong><code>conv_size</code></strong>=<em><code>13</code></em>, <strong><code>incept_in1</code></strong>=<em><code>48</code></em>, <strong><code>incept_out1</code></strong>=<em><code>32</code></em>, <strong><code>incept_stride1</code></strong>=<em><code>1</code></em>, <strong><code>incept_in2</code></strong>=<em><code>96</code></em>, <strong><code>incept_out2</code></strong>=<em><code>64</code></em>, <strong><code>incept_stride2</code></strong>=<em><code>1</code></em>, <strong><code>C1</code></strong>=<em><code>192</code></em>, <strong><code>C2</code></strong>=<em><code>128</code></em>, <strong><code>C3</code></strong>=<em><code>32</code></em>) :: <code>Module</code></p>
+<h2 id="SinglePathMolMapNet" class="doc_header"><code>class</code> <code>SinglePathMolMapNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L105" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SinglePathMolMapNet</code>(<strong><code>conv_in</code></strong>=<em><code>13</code></em>, <strong><code>conv_size</code></strong>=<em><code>13</code></em>, <strong><code>FC</code></strong>=<em><code>[128, 32]</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>Single Path Molecular Mapping Network</p>
 
@@ -795,25 +804,22 @@ nb_path: "03_nets.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Dual-path-Molecular-Mapping-network">Dual path Molecular Mapping network<a class="anchor-link" href="#Dual-path-Molecular-Mapping-network"> </a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Additive-path-Molecular-Mapping-network">Additive path Molecular Mapping network<a class="anchor-link" href="#Additive-path-Molecular-Mapping-network"> </a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Residual-Molecular-Mapping-network">Residual Molecular Mapping network<a class="anchor-link" href="#Residual-Molecular-Mapping-network"> </a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Resnet-block">Resnet block<a class="anchor-link" href="#Resnet-block"> </a></h3><p>Thought not used Note that in the first conv net the activation is <em>before</em> batch normalisation.</p>
+<h2 id="Double-Path-Molecular-Mapping-network">Double Path Molecular Mapping network<a class="anchor-link" href="#Double-Path-Molecular-Mapping-network"> </a></h2><p>Both the descriptor map and Fingerprint map will pass through the convolutional block, then the double inception block, and their results are then combined, before finally pass through the fully connected layers.</p>
+<p>After convolutional and double inception block:</p>
+<ul>
+<li>descriptor: <code>13*37*37</code> -&gt; <code>192*10*10</code></li>
+<li>fingerprint: <code>3*37*36</code> -&gt; <code>192*10*9</code></li>
+</ul>
+<p>After global max pooling:</p>
+<ul>
+<li>descriptor: <code>192*10*10</code> -&gt; <code>192</code></li>
+<li>fingerprint: <code>192*10*9</code> -&gt; <code>192</code></li>
+</ul>
+<p>After Concatenation and fully connected blocks:</p>
+<ul>
+<li><code>192 + 192</code> -&gt; <code>384</code> -&gt; <code>32</code></li>
+</ul>
+<p>The output layer is not included.</p>
 
 </div>
 </div>
@@ -829,7 +835,84 @@ nb_path: "03_nets.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Resnet" class="doc_header"><code>class</code> <code>Resnet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L127" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Resnet</code>(<strong><code>C</code></strong>, <strong><code>conv_size</code></strong>) :: <code>Module</code></p>
+<h2 id="DoublePathMolMapNet" class="doc_header"><code>class</code> <code>DoublePathMolMapNet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L126" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DoublePathMolMapNet</code>(<strong><code>conv_in1</code></strong>=<em><code>13</code></em>, <strong><code>conv_in2</code></strong>=<em><code>3</code></em>, <strong><code>conv_size</code></strong>=<em><code>13</code></em>, <strong><code>FC</code></strong>=<em><code>[256, 128, 32]</code></em>) :: <code>Module</code></p>
+</blockquote>
+<p>Double Path Molecular Mapping Network</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">double_path</span> <span class="o">=</span> <span class="n">DoublePathMolMapNet</span><span class="p">()</span>
+
+<span class="n">i1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">37</span><span class="p">))</span>
+<span class="n">i2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">double_path</span><span class="p">(</span><span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">)</span>
+<span class="n">o</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([10, 32])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Resnet-block">Resnet block<a class="anchor-link" href="#Resnet-block"> </a></h2><p>Currently not used</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="Resnet" class="doc_header"><code>class</code> <code>Resnet</code><a href="https://github.com/riversdark/molmapnets/tree/master/molmapnets/nets.py#L154" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Resnet</code>(<strong><code>C</code></strong>, <strong><code>conv_size</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>Naive Google Inception Block</p>
 
