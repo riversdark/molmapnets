@@ -24,6 +24,9 @@ entries:
     - output: web,pdf
       title: bace
       url: bace.html
+    - output: web,pdf
+      title: clintox
+      url: clintox.html
     output: web
     title: molmapnets
   output: web
