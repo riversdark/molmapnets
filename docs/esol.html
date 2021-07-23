@@ -36,6 +36,23 @@ nb_path: "03_esol.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">config</span> Completer.use_jedi = False
 </pre></div>
 
@@ -86,6 +103,21 @@ nb_path: "03_esol.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span><span class="p">,</span> <span class="n">optim</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">set_default_dtype</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">random_split</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -105,6 +137,20 @@ nb_path: "03_esol.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>RDKit WARNING: [08:42:17] Enabling RDKit 2019.09.3 jupyter extensions
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -120,20 +166,6 @@ nb_path: "03_esol.ipynb"
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>RDKit WARNING: [21:38:06] Enabling RDKit 2019.09.3 jupyter extensions
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -392,8 +424,8 @@ var_thr: float, defalt is 1e-4, meaning that feature will be included only if th
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2021-07-22 21:38:23,335 - INFO - [bidd-molmap] - Applying grid feature map(assignment), this may take several minutes(1~30 min)
-2021-07-22 21:38:26,510 - INFO - [bidd-molmap] - Finished
+<pre>2021-07-23 08:42:33,461 - INFO - [bidd-molmap] - Applying grid feature map(assignment), this may take several minutes(1~30 min)
+2021-07-23 08:42:36,598 - INFO - [bidd-molmap] - Finished
 </pre>
 </div>
 </div>
@@ -433,8 +465,8 @@ var_thr: float, defalt is 1e-4, meaning that feature will be included only if th
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2021-07-22 21:38:54,356 - INFO - [bidd-molmap] - Applying grid feature map(assignment), this may take several minutes(1~30 min)
-2021-07-22 22:11:46,397 - INFO - [bidd-molmap] - Finished
+<pre>2021-07-23 08:43:03,717 - INFO - [bidd-molmap] - Applying grid feature map(assignment), this may take several minutes(1~30 min)
+2021-07-23 09:13:47,973 - INFO - [bidd-molmap] - Finished
 </pre>
 </div>
 </div>
@@ -478,7 +510,7 @@ var_thr: float, defalt is 1e-4, meaning that feature will be included only if th
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>100%|##########| 1128/1128 [08:45&lt;00:00,  2.35it/s]
+<pre>100%|##########| 1128/1128 [05:51&lt;00:00,  3.57it/s]
 </pre>
 </div>
 </div>
@@ -751,14 +783,14 @@ var_thr: float, defalt is 1e-4, meaning that feature will be included only if th
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>tensor([[-2.3560],
-        [-2.4840],
-        [-1.0600],
-        [ 0.3900],
-        [ 0.9600],
+<pre>tensor([[-6.0250],
+        [-1.1550],
+        [-7.9200],
+        [-0.6000],
+        [-1.4800],
         [-2.1700],
-        [-2.7300],
-        [-0.6200]])</pre>
+        [-0.4900],
+        [ 0.3200]])</pre>
 </div>
 
 </div>
@@ -892,16 +924,16 @@ var_thr: float, defalt is 1e-4, meaning that feature will be included only if th
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[Epoch: 1, Iter:    50] Training loss: 6.567
-[Epoch: 1, Iter:   100] Training loss: 5.444
-[Epoch: 2, Iter:    50] Training loss: 3.304
-[Epoch: 2, Iter:   100] Training loss: 2.579
-[Epoch: 3, Iter:    50] Training loss: 2.061
-[Epoch: 3, Iter:   100] Training loss: 1.807
-[Epoch: 4, Iter:    50] Training loss: 1.179
-[Epoch: 4, Iter:   100] Training loss: 1.294
-[Epoch: 5, Iter:    50] Training loss: 1.191
-[Epoch: 5, Iter:   100] Training loss: 1.397
+<pre>[Epoch: 1, Iter:    50] Training loss: 4.805
+[Epoch: 1, Iter:   100] Training loss: 4.312
+[Epoch: 2, Iter:    50] Training loss: 3.147
+[Epoch: 2, Iter:   100] Training loss: 2.458
+[Epoch: 3, Iter:    50] Training loss: 1.508
+[Epoch: 3, Iter:   100] Training loss: 1.397
+[Epoch: 4, Iter:    50] Training loss: 1.194
+[Epoch: 4, Iter:   100] Training loss: 1.141
+[Epoch: 5, Iter:    50] Training loss: 1.016
+[Epoch: 5, Iter:   100] Training loss: 1.153
 Training finished
 </pre>
 </div>
@@ -954,10 +986,10 @@ Training finished
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[Iter:     3] Validation loss: 0.732
-[Iter:     6] Validation loss: 0.950
-[Iter:     9] Validation loss: 0.959
-[Iter:    12] Validation loss: 0.983
+<pre>[Iter:     3] Validation loss: 1.125
+[Iter:     6] Validation loss: 1.235
+[Iter:     9] Validation loss: 1.122
+[Iter:    12] Validation loss: 1.409
 </pre>
 </div>
 </div>
@@ -994,7 +1026,7 @@ Training finished
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>100%|##########| 1128/1128 [03:37&lt;00:00,  5.55it/s]
+<pre>100%|##########| 1128/1128 [03:16&lt;00:00,  5.58it/s]
 </pre>
 </div>
 </div>
@@ -1302,16 +1334,16 @@ Training finished
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[Epoch: 1, Iter:    50] Training loss: 4.537
-[Epoch: 1, Iter:   100] Training loss: 3.935
-[Epoch: 2, Iter:    50] Training loss: 2.271
-[Epoch: 2, Iter:   100] Training loss: 1.954
-[Epoch: 3, Iter:    50] Training loss: 1.258
-[Epoch: 3, Iter:   100] Training loss: 1.157
-[Epoch: 4, Iter:    50] Training loss: 1.027
-[Epoch: 4, Iter:   100] Training loss: 0.880
-[Epoch: 5, Iter:    50] Training loss: 0.660
-[Epoch: 5, Iter:   100] Training loss: 0.649
+<pre>[Epoch: 1, Iter:    50] Training loss: 4.696
+[Epoch: 1, Iter:   100] Training loss: 3.811
+[Epoch: 2, Iter:    50] Training loss: 1.911
+[Epoch: 2, Iter:   100] Training loss: 1.795
+[Epoch: 3, Iter:    50] Training loss: 1.104
+[Epoch: 3, Iter:   100] Training loss: 1.065
+[Epoch: 4, Iter:    50] Training loss: 0.911
+[Epoch: 4, Iter:   100] Training loss: 0.917
+[Epoch: 5, Iter:    50] Training loss: 0.583
+[Epoch: 5, Iter:   100] Training loss: 0.585
 Training finished
 </pre>
 </div>
@@ -1364,10 +1396,10 @@ Training finished
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[Iter:     3] Validation loss: 0.442
-[Iter:     6] Validation loss: 0.599
-[Iter:     9] Validation loss: 0.708
-[Iter:    12] Validation loss: 0.851
+<pre>[Iter:     3] Validation loss: 0.935
+[Iter:     6] Validation loss: 0.854
+[Iter:     9] Validation loss: 1.148
+[Iter:    12] Validation loss: 1.107
 </pre>
 </div>
 </div>
@@ -1650,16 +1682,16 @@ Training finished
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[Epoch: 1, Iter:    50] Training loss: 6.050
-[Epoch: 1, Iter:   100] Training loss: 4.608
-[Epoch: 2, Iter:    50] Training loss: 2.854
-[Epoch: 2, Iter:   100] Training loss: 2.403
-[Epoch: 3, Iter:    50] Training loss: 1.834
-[Epoch: 3, Iter:   100] Training loss: 1.536
-[Epoch: 4, Iter:    50] Training loss: 1.027
-[Epoch: 4, Iter:   100] Training loss: 0.996
-[Epoch: 5, Iter:    50] Training loss: 0.595
-[Epoch: 5, Iter:   100] Training loss: 0.677
+<pre>[Epoch: 1, Iter:    50] Training loss: 4.954
+[Epoch: 1, Iter:   100] Training loss: 4.000
+[Epoch: 2, Iter:    50] Training loss: 3.246
+[Epoch: 2, Iter:   100] Training loss: 2.585
+[Epoch: 3, Iter:    50] Training loss: 1.431
+[Epoch: 3, Iter:   100] Training loss: 1.264
+[Epoch: 4, Iter:    50] Training loss: 0.928
+[Epoch: 4, Iter:   100] Training loss: 0.963
+[Epoch: 5, Iter:    50] Training loss: 0.629
+[Epoch: 5, Iter:   100] Training loss: 0.606
 Training finished
 </pre>
 </div>
@@ -1714,10 +1746,10 @@ Training finished
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[Iter:     3] Validation loss: 1.191
-[Iter:     6] Validation loss: 1.088
-[Iter:     9] Validation loss: 1.002
-[Iter:    12] Validation loss: 0.874
+<pre>[Iter:     3] Validation loss: 0.876
+[Iter:     6] Validation loss: 0.909
+[Iter:     9] Validation loss: 1.017
+[Iter:    12] Validation loss: 0.975
 Validation finished
 </pre>
 </div>

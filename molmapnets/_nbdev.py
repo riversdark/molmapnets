@@ -18,8 +18,7 @@ index = {"Convnet": "01_nets.ipynb",
 
 modules = ["nets.py",
            "models.py",
-           "data.py",
-           "esol.py"]
+           "data.py"]
 
 doc_url = "https://riversdark.github.io/molmapnets/"
 

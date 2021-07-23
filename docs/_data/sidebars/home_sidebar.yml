@@ -21,6 +21,9 @@ entries:
     - output: web,pdf
       title: esol
       url: esol.html
+    - output: web,pdf
+      title: bace
+      url: bace.html
     output: web
     title: molmapnets
   output: web
