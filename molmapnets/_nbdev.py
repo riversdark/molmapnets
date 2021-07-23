@@ -13,12 +13,13 @@ index = {"Convnet": "01_nets.ipynb",
          "MolMapRegression": "02_models.ipynb",
          "MolMapMultiClassClassification": "02_models.ipynb",
          "MolMapMultiLabelClassification": "02_models.ipynb",
-         "SingleFeatureData": "03_train.ipynb",
-         "DoubleFeatureData": "03_train.ipynb"}
+         "SingleFeatureData": "03_data.ipynb",
+         "DoubleFeatureData": "03_data.ipynb"}
 
 modules = ["nets.py",
            "models.py",
-           "train.py"]
+           "data.py",
+           "esol.py"]
 
 doc_url = "https://riversdark.github.io/molmapnets/"
 

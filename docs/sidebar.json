@@ -3,6 +3,7 @@
     "Overview": "/",
     "nets": "nets.html",
     "models": "models.html",
-    "esol": "train.html"
+    "data": "data.html",
+    "esol": "esol.html"
   }
 }

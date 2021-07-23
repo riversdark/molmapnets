@@ -16,8 +16,11 @@ entries:
       title: models
       url: models.html
     - output: web,pdf
+      title: data
+      url: data.html
+    - output: web,pdf
       title: esol
-      url: train.html
+      url: esol.html
     output: web
     title: molmapnets
   output: web
