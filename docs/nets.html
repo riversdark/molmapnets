@@ -686,7 +686,7 @@ nb_path: "01_nets.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Single-Path-Molecular-Mapping-network">Single Path Molecular Mapping network<a class="anchor-link" href="#Single-Path-Molecular-Mapping-network"> </a></h2><p>Descriptor map or Fingerprint map only. The two have identical network structures, and only differs in data shape.</p>
+<h2 id="Single-Path-Molecular-Mapping-network">Single Path Molecular Mapping network<a class="anchor-link" href="#Single-Path-Molecular-Mapping-network"> </a></h2><p>Descriptor map or Fingerprint map only. The two feature maps use identical network structures and only differ in data shape. Note that we need to specify the number of channels for the feature maps when initialising the model, but the model should be able to handle feature maps with different dimensions.</p>
 <ul>
 <li>descriptor: <code>13*37*37</code> -&gt; <code>32</code></li>
 <li>fingerprint: <code>3*37*36</code> -&gt; <code>32</code></li>
